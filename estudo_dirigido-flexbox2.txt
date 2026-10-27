@@ -1,0 +1,297 @@
+ESTUDO DIRIGIDO - CSS: FLEXBOX (PARTE 2)
+
+1. Qual é a diferença entre contêiner e item? Em qual dos dois se escreve display: flex?
+
+R- O contêiner é o elemento pai que contém os outros elementos, e os itens são os elementos filhos que estão dentro dele. O display: flex é colocado no contêiner.
+
+
+2. Se o CSS não diz nada sobre flex-direction, qual é o eixo principal e em que direção ele corre?
+
+R- Por padrão, o flex-direction é row. Então o eixo principal é horizontal e corre da esquerda para a direita.
+
+
+3. O que é a sobra de espaço numa faixa flex? Quem a distribui quando todos os itens têm flex-grow: 0?
+
+R- A sobra de espaço é o espaço que fica livre no contêiner depois de colocar os itens. Se todos os itens tiverem flex-grow: 0, essa sobra não é distribuída entre eles e continua como espaço livre.
+
+
+4. Complete: o valor padrão de flex-grow é ___, o que significa que o item...
+
+R- O valor padrão é 0, o que significa que o item não cresce para ocupar o espaço que sobrou.
+
+
+5. Na analogia da pizza, o que representa cada um destes elementos: a mesa, o prato de cada pessoa, a sobra e o peso do flex-grow?
+
+R- A mesa representa o contêiner flex. O prato de cada pessoa representa o espaço inicial de cada item. A sobra representa o espaço livre disponível e o peso do flex-grow representa quanto dessa sobra cada item vai receber.
+
+
+6. Uma barra tem a marca e dois links. Qual declaração faz a marca ocupar toda a sobra, deixando os links do tamanho do texto? Em qual elemento ela vai?
+
+R- A declaração é flex-grow: 1; e ela deve ser colocada no elemento da marca. Assim, a marca cresce e ocupa o espaço que sobrou, enquanto os links continuam com o tamanho necessário para o texto.
+
+
+7. Três itens com base 0, numa faixa de 600px, têm flex-grow 2, 3 e 1. Calcule a largura de cada um.
+
+R- Soma dos pesos:
+
+2 + 3 + 1 = 6
+
+Como a base é 0, os 600px serão distribuídos.
+
+Valor de cada parte:
+
+600 / 6 = 100px
+
+Primeiro item:
+2 x 100 = 200px
+
+Segundo item:
+3 x 100 = 300px
+
+Terceiro item:
+1 x 100 = 100px
+
+Resposta: 200px, 300px e 100px.
+
+
+8. Três itens têm flex-basis: 100px numa faixa de 600px, com flex-grow 0, 1 e 2. Quanto sobra? Qual a largura final de cada item?
+
+R- Primeiro calculamos o espaço ocupado inicialmente:
+
+100 + 100 + 100 = 300px
+
+Sobra:
+
+600 - 300 = 300px
+
+Soma dos pesos:
+
+0 + 1 + 2 = 3
+
+Cada parte vale:
+
+300 / 3 = 100px
+
+Primeiro item:
+100 + 0 = 100px
+
+Segundo item:
+100 + 100 = 200px
+
+Terceiro item:
+100 + 200 = 300px
+
+Resposta: sobra 300px e as larguras finais são 100px, 200px e 300px.
+
+
+9. Quando o flex-shrink entra em ação: quando sobra ou quando falta espaço? Qual é o valor padrão?
+
+R- O flex-shrink entra em ação quando falta espaço no contêiner. Seu valor padrão é 1.
+
+
+10. Dois itens de 400px estão numa faixa de 600px, ambos com flex-shrink: 1. Quanto falta? Qual a largura final de cada um?
+
+R- Os dois itens juntos ocupam:
+
+400 + 400 = 800px
+
+Mas o contêiner possui apenas 600px.
+
+800 - 600 = 200px
+
+Faltam 200px. Como os dois possuem o mesmo flex-shrink e o mesmo tamanho inicial, cada um encolhe 100px.
+
+400 - 100 = 300px
+
+Resposta: faltam 200px e cada item fica com 300px.
+
+
+11. Refaça a questão anterior com flex-shrink: 0 no primeiro item. Qual a largura final de cada um? O conjunto cabe na faixa?
+
+R- O primeiro item não pode encolher, então continua com 400px.
+
+O segundo precisa perder os 200px que estão faltando:
+
+400 - 200 = 200px
+
+Resposta: o primeiro fica com 400px e o segundo com 200px. Juntos ocupam 600px, então cabem na faixa.
+
+
+12. Dê um exemplo prático de item que deveria ter flex-shrink: 0 e explique por quê.
+
+R- Um exemplo seria um logotipo em uma barra de navegação. Podemos usar flex-shrink: 0 para evitar que ele fique menor quando faltar espaço, mantendo seu tamanho.
+
+
+13. O que é o flex-basis? Se um item tem width: 200px e flex-basis: 10rem, qual medida vale como tamanho de partida?
+
+R- O flex-basis define o tamanho inicial de um item flex antes de distribuir a sobra ou realizar o encolhimento. Nesse caso, o tamanho de partida será 10rem, pois o flex-basis é usado como base no eixo principal.
+
+
+14. Por que usar flex-basis: 0 faz o flex-grow repartir a faixa inteira, e não só a sobra?
+
+R- Porque com flex-basis: 0 os itens começam com uma base de 0. Assim, praticamente toda a faixa é considerada espaço disponível e é distribuída de acordo com os valores de flex-grow.
+
+
+15. Preencha a tabela com os valores equivalentes de cada atalho.
+
+R-
+
+flex: initial
+grow: 0
+shrink: 1
+basis: auto
+
+flex: 1
+grow: 1
+shrink: 1
+basis: 0
+
+flex: auto
+grow: 1
+shrink: 1
+basis: auto
+
+flex: none
+grow: 0
+shrink: 0
+basis: auto
+
+
+16. Dois itens, de conteúdo 100px e 300px, numa faixa de 600px. Calcule a largura final de cada um com flex: 1 e depois com flex: auto. Por que os resultados diferem?
+
+R- Com flex: 1, a base é 0. Então os 600px são divididos igualmente:
+
+600 / 2 = 300px
+
+Resultado:
+Primeiro item = 300px
+Segundo item = 300px
+
+Com flex: auto, o tamanho do conteúdo é considerado como base.
+
+Espaço inicial:
+
+100 + 300 = 400px
+
+Sobra:
+
+600 - 400 = 200px
+
+Como os dois têm o mesmo crescimento, cada um recebe 100px.
+
+Primeiro item:
+100 + 100 = 200px
+
+Segundo item:
+300 + 100 = 400px
+
+Resultado:
+Primeiro item = 200px
+Segundo item = 400px
+
+Os resultados são diferentes porque flex: 1 usa base 0, enquanto flex: auto considera o tamanho inicial do conteúdo.
+
+
+17. Verdadeiro ou falso? "flex: 1 e flex: auto sempre dão o mesmo resultado quando os itens têm o mesmo conteúdo."
+
+R- Falso. Mesmo que em algumas situações o resultado possa parecer igual, flex: 1 usa flex-basis: 0 e flex: auto usa flex-basis: auto. Portanto, eles não funcionam da mesma maneira.
+
+
+18. Um item tem flex-shrink: 1 e mesmo assim estoura a faixa por causa de uma palavra muito longa. Qual propriedade padrão está segurando o item e qual ajuste a solta?
+
+R- A propriedade que pode impedir o item de encolher é o min-width, que por padrão funciona como auto nos itens flex. Para permitir que ele encolha, podemos usar min-width: 0.
+
+
+19. Em que situação você esperaria ver esse problema ao montar um miolo com menu e texto?
+
+R- Esse problema pode acontecer quando o conteúdo principal possui uma palavra, link ou texto muito longo que não consegue quebrar ou encolher. Isso pode fazer o conteúdo ultrapassar o espaço disponível ao lado do menu.
+
+
+20. Observe o trecho e responda.
+
+(a) Qual é a ordem na tela?
+
+R- A ordem visual será C, A, B, pois C possui order: -1 e aparece antes dos elementos com order padrão.
+
+(b) Qual é a ordem de foco ao apertar a tecla Tab?
+
+R- O order não altera a ordem lógica do HTML. Para elementos que podem receber foco, a ordem continua seguindo o HTML: A, B, C.
+
+(c) Por que isso importa para quem usa leitor de tela?
+
+R- Porque mudar apenas a ordem visual pode fazer a ordem mostrada na tela ser diferente da ordem lógica do HTML. Isso pode causar confusão para pessoas que usam teclado ou leitor de tela.
+
+
+21. Qual é o valor padrão de order? Entre order: -1 e order: 2, quem aparece primeiro?
+
+R- O valor padrão de order é 0. Entre -1 e 2, o elemento com order: -1 aparece primeiro.
+
+
+22. O pai tem align-items: stretch. O que acontece com um filho com align-self: flex-end? E com align-self: auto?
+
+R- O filho com align-self: flex-end ignora o alinhamento stretch do pai para si mesmo e fica alinhado no final do eixo transversal. Já com align-self: auto, ele segue o align-items definido no pai, que nesse caso é stretch.
+
+
+23. Quando usar align-self e quando usar align-items?
+
+R- O align-items é usado no contêiner para alinhar todos os seus itens. O align-self é usado em um item específico quando queremos que ele tenha um alinhamento diferente dos outros.
+
+
+24. Nesta estrutura, quais elementos são itens de .pagina e quais são itens de .miolo?
+
+R- Os itens diretos de .pagina são header, .miolo e footer. Os itens diretos de .miolo são aside e main.
+
+
+25. Por que .miolo precisa ter display: flex além de ser item de .pagina?
+
+R- Porque ser um item flex não faz automaticamente seus filhos virarem itens flex. O .miolo é um item de .pagina, mas precisa de display: flex para que aside e main também sejam organizados usando Flexbox.
+
+
+26. Explique a função de cada declaração.
+
+R-
+
+.pagina { display: flex; flex-direction: column; min-height: 100vh; }
+
+display: flex transforma .pagina em um contêiner flex.
+flex-direction: column organiza seus itens verticalmente.
+min-height: 100vh faz a página ter no mínimo a altura total da tela.
+
+.miolo { display: flex; flex: 1; }
+
+display: flex transforma .miolo em outro contêiner flex, permitindo organizar aside e main.
+flex: 1 faz o miolo crescer para ocupar o espaço disponível.
+
+aside { flex: 0 0 10rem; }
+
+O aside não cresce e não encolhe, mantendo uma base de 10rem.
+
+main { flex: 1; min-width: 0; }
+
+flex: 1 faz o main crescer para ocupar o espaço disponível.
+min-width: 0 permite que ele encolha corretamente quando necessário.
+
+
+27. Um colega escreveu flex-grow: 1 no contêiner e diz que não funciona. Qual é o erro e qual a correção?
+
+R- O erro é achar que flex-grow controla os filhos quando colocado no contêiner. O flex-grow é uma propriedade usada nos itens flex. A correção é colocar flex-grow: 1 no item que deve crescer.
+
+
+28. Cite duas formas de resolver um item que estoura a faixa e explique quando cada uma é indicada.
+
+R- Uma forma é usar min-width: 0. Isso é indicado quando um item flex não consegue encolher por causa do seu tamanho mínimo automático. Outra forma é permitir a quebra do conteúdo, usando uma propriedade como overflow-wrap: break-word. Isso é útil quando uma palavra ou link muito longo está fazendo o conteúdo ultrapassar o espaço disponível.
+
+
+29. Monte um resumo de uma frase para cada propriedade.
+
+R-
+
+flex-basis: define o tamanho inicial do item antes do crescimento ou encolhimento.
+
+flex-grow: define quanto um item pode crescer para ocupar o espaço que sobrou.
+
+flex-shrink: define quanto um item pode encolher quando falta espaço.
+
+order: altera a ordem visual dos itens dentro de um contêiner flex.
+
+align-self: permite alterar o alinhamento de um item específico no eixo transversal.
